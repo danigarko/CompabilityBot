@@ -19,15 +19,16 @@ public class HeadButtons {
 
         List<KeyboardRow> keyboardRowList = new ArrayList<>();
         KeyboardRow keyBoardFirstRow = new KeyboardRow();
-        KeyboardButton keyboardButton1 = new KeyboardButton();
-        KeyboardButton keyboardButton2 = new KeyboardButton();
-        keyboardButton1.setText("Совместимость по знакам");
-        keyboardButton2.setText("Гороскоп на сегодня");
+        KeyboardRow keyBoardSecondRow = new KeyboardRow();
+        keyBoardFirstRow.add(new KeyboardButton("Совместимость по знакам"));
+        keyBoardFirstRow.add(new KeyboardButton("Гороскоп на сегодня"));
+        keyBoardSecondRow.add(new KeyboardButton("Уточнить совместимость между знаками"));
+
 
 
         keyboardRowList.add(keyBoardFirstRow);
-        keyBoardFirstRow.add(keyboardButton1);
-        keyBoardFirstRow.add(keyboardButton2);
+        keyboardRowList.add(keyBoardSecondRow);
+
         replyKeyboardMarkup.setKeyboard(keyboardRowList);
     }
 
