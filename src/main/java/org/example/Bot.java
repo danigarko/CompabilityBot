@@ -26,12 +26,14 @@ public class Bot extends TelegramLongPollingBot {
         return "7045169343:AAEWGpbGzkjtylc28Nzjnjb0CFOfy72ezPM";
     }
 
+    Buttons buttons = new Buttons();
+
     public void sendText(Long who, String what){
         SendMessage sm = SendMessage.builder()
                 .chatId(who.toString())
                 .text(what).build();
         try {
-            setButtons(sm);
+            buttons.setButtons(sm);
             execute(sm);
         } catch (TelegramApiException e) {
             throw new RuntimeException(e);
@@ -80,36 +82,5 @@ public class Bot extends TelegramLongPollingBot {
 
     }
 
-    public void setButtons (SendMessage sendMessage) {
-        ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
-        sendMessage.setReplyMarkup(replyKeyboardMarkup);
-        replyKeyboardMarkup.setSelective(true);
-        replyKeyboardMarkup.setResizeKeyboard(true);
-        replyKeyboardMarkup.setOneTimeKeyboard(false);
 
-        List<KeyboardRow> keyboardRowList = new ArrayList<>();
-        KeyboardRow keyBoardFirstRow = new KeyboardRow();
-        KeyboardRow keyBoardSecondRow = new KeyboardRow();
-        KeyboardRow keyBoardThirdRow = new KeyboardRow();
-        KeyboardRow keyBoardFourthRow = new KeyboardRow();
-
-        keyBoardFirstRow.add(new KeyboardButton("Овен"));
-        keyBoardFirstRow.add(new KeyboardButton("Телец"));
-        keyBoardFirstRow.add(new KeyboardButton("Близнецы"));
-        keyBoardSecondRow.add(new KeyboardButton("Рак"));
-        keyBoardSecondRow.add(new KeyboardButton("Лев"));
-        keyBoardSecondRow.add(new KeyboardButton("Дева"));
-        keyBoardThirdRow.add(new KeyboardButton("Весы"));
-        keyBoardThirdRow.add(new KeyboardButton("Скорпион"));
-        keyBoardThirdRow.add(new KeyboardButton("Стрелец"));
-        keyBoardFourthRow.add(new KeyboardButton("Козерог"));
-        keyBoardFourthRow.add(new KeyboardButton("Водолей"));
-        keyBoardFourthRow.add(new KeyboardButton("Рыбы"));
-
-        keyboardRowList.add(keyBoardFirstRow);
-        keyboardRowList.add(keyBoardSecondRow);
-        keyboardRowList.add(keyBoardThirdRow);
-        keyboardRowList.add(keyBoardFourthRow);
-        replyKeyboardMarkup.setKeyboard(keyboardRowList);
-    }
 }
