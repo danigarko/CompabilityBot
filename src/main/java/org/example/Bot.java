@@ -4,15 +4,7 @@ import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
-import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
-import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
-import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
-import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardButton;
-import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Bot extends TelegramLongPollingBot {
 
@@ -27,8 +19,21 @@ public class Bot extends TelegramLongPollingBot {
     }
 
     Buttons buttons = new Buttons();
+    HeadButtons headButtons = new HeadButtons();
 
     public void sendText(Long who, String what){
+        SendMessage sm = SendMessage.builder()
+                .chatId(who.toString())
+                .text(what).build();
+        try {
+            headButtons.setButtons(sm);
+            execute(sm);
+        } catch (TelegramApiException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void sendText1(Long who, String what){
         SendMessage sm = SendMessage.builder()
                 .chatId(who.toString())
                 .text(what).build();
@@ -40,6 +45,7 @@ public class Bot extends TelegramLongPollingBot {
         }
     }
 
+
     @Override
     public void onUpdateReceived(Update update) {
 
@@ -47,33 +53,37 @@ public class Bot extends TelegramLongPollingBot {
         String text = message.getText();
         long userId = message.getFrom().getId();
         if (text.equals("/start")) {
-            sendText(userId, "Напишите ваш знак зодиака");
+            sendText(userId, "Выберите пункт меню");
         } else if (text.equalsIgnoreCase("Стрелец")) {
-            sendText(userId, "Ваша идеальная пара - Водолей");
-        } else if (text.equalsIgnoreCase("Овен") || text.equals("овен")) {
-            sendText(userId, "Ваша идеальная пара - Козерог");
+            sendText1(userId, "Ваша идеальная пара - Водолей");
+        } else if (text.equalsIgnoreCase("Овен")) {
+            sendText1(userId, "Ваша идеальная пара - Козерог");
         } else if (text.equalsIgnoreCase("Телец")) {
-            sendText(userId, "Ваша идеальная пара - Рыбы");
+            sendText1(userId, "Ваша идеальная пара - Рыбы");
         } else if (text.equalsIgnoreCase("Близнецы")) {
-            sendText(userId, "Ваша идеальная пара - Лев");
+            sendText1(userId, "Ваша идеальная пара - Лев");
         } else if (text.equalsIgnoreCase("Рак")) {
-            sendText(userId, "Ваша идеальная пара - Скорпион");
+            sendText1(userId, "Ваша идеальная пара - Скорпион");
         } else if (text.equalsIgnoreCase("Лев")) {
-            sendText(userId, "Ваша идеальная пара - Стрелец");
+            sendText1(userId, "Ваша идеальная пара - Стрелец");
         } else if (text.equalsIgnoreCase("Дева")) {
-            sendText(userId, "Ваша идеальная пара - Скорпион");
+            sendText1(userId, "Ваша идеальная пара - Скорпион");
         } else if (text.equalsIgnoreCase("Весы")) {
-            sendText(userId, "Ваша идеальная пара - Лев");
+            sendText1(userId, "Ваша идеальная пара - Лев");
         } else if (text.equalsIgnoreCase("Скорпион")) {
-            sendText(userId, "Ваша идеальная пара - Рыбы");
+            sendText1(userId, "Ваша идеальная пара - Рыбы");
         } else if (text.equalsIgnoreCase("Козерог")) {
-            sendText(userId, "Ваша идеальная пара - Телец");
+            sendText1(userId, "Ваша идеальная пара - Телец");
         } else if (text.equalsIgnoreCase("Водолей")) {
-            sendText(userId, "Ваша идеальная пара - Водолей");
+            sendText1(userId, "Ваша идеальная пара - Водолей");
         } else if (text.equalsIgnoreCase("Рыбы")) {
-            sendText(userId, "Ваша идеальная пара - Стрелец");
-        } else if (text.equalsIgnoreCase("/help")) {
-            sendText(userId, "Чтобы узнать вашу совместимость по зна");
+            sendText1(userId, "Ваша идеальная пара - Стрелец");
+        } else if (text.equalsIgnoreCase("Совместимость по знакам")) {
+            sendText1(userId, "Укажите ваш знак зодиака");
+        } else if (text.equalsIgnoreCase("Гороскоп на сегодня")) {
+            sendText(userId, "Пока в разработке");
+        } else if (text.equalsIgnoreCase("Вернуться на главное меню")) {
+            sendText(userId, "Пока в разработке");
         } else {
             sendText(userId, "Что?");
         }

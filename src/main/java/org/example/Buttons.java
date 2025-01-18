@@ -22,6 +22,7 @@ public class Buttons {
         KeyboardRow keyBoardSecondRow = new KeyboardRow();
         KeyboardRow keyBoardThirdRow = new KeyboardRow();
         KeyboardRow keyBoardFourthRow = new KeyboardRow();
+        KeyboardRow keyBoardFifthRow = new KeyboardRow();
 
         keyBoardFirstRow.add(new KeyboardButton("Овен"));
         keyBoardFirstRow.add(new KeyboardButton("Телец"));
@@ -35,11 +36,13 @@ public class Buttons {
         keyBoardFourthRow.add(new KeyboardButton("Козерог"));
         keyBoardFourthRow.add(new KeyboardButton("Водолей"));
         keyBoardFourthRow.add(new KeyboardButton("Рыбы"));
+        keyBoardFifthRow.add(new KeyboardButton("Вернуться на главное меню"));
 
         keyboardRowList.add(keyBoardFirstRow);
         keyboardRowList.add(keyBoardSecondRow);
         keyboardRowList.add(keyBoardThirdRow);
         keyboardRowList.add(keyBoardFourthRow);
+        keyboardRowList.add(keyBoardFifthRow);
         replyKeyboardMarkup.setKeyboard(keyboardRowList);
     }
 }
