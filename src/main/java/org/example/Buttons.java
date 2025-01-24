@@ -21,28 +21,15 @@ public class Buttons {
         KeyboardRow keyBoardFirstRow = new KeyboardRow();
         KeyboardRow keyBoardSecondRow = new KeyboardRow();
         KeyboardRow keyBoardThirdRow = new KeyboardRow();
-        KeyboardRow keyBoardFourthRow = new KeyboardRow();
-        KeyboardRow keyBoardFifthRow = new KeyboardRow();
+        KeyboardRow keyBoardFourRow = new KeyboardRow();
 
-        keyBoardFirstRow.add(new KeyboardButton("Овен"));
-        keyBoardFirstRow.add(new KeyboardButton("Телец"));
-        keyBoardFirstRow.add(new KeyboardButton("Близнецы"));
-        keyBoardSecondRow.add(new KeyboardButton("Рак"));
-        keyBoardSecondRow.add(new KeyboardButton("Лев"));
-        keyBoardSecondRow.add(new KeyboardButton("Дева"));
-        keyBoardThirdRow.add(new KeyboardButton("Весы"));
-        keyBoardThirdRow.add(new KeyboardButton("Скорпион"));
-        keyBoardThirdRow.add(new KeyboardButton("Стрелец"));
-        keyBoardFourthRow.add(new KeyboardButton("Козерог"));
-        keyBoardFourthRow.add(new KeyboardButton("Водолей"));
-        keyBoardFourthRow.add(new KeyboardButton("Рыбы"));
-        keyBoardFifthRow.add(new KeyboardButton("Вернуться на главное меню"));
+        keyBoardFirstRow.add(new KeyboardButton("Вернуться в главное меню"));
+
 
         keyboardRowList.add(keyBoardFirstRow);
         keyboardRowList.add(keyBoardSecondRow);
         keyboardRowList.add(keyBoardThirdRow);
-        keyboardRowList.add(keyBoardFourthRow);
-        keyboardRowList.add(keyBoardFifthRow);
         replyKeyboardMarkup.setKeyboard(keyboardRowList);
+
     }
 }

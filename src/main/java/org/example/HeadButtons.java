@@ -20,14 +20,16 @@ public class HeadButtons {
         List<KeyboardRow> keyboardRowList = new ArrayList<>();
         KeyboardRow keyBoardFirstRow = new KeyboardRow();
         KeyboardRow keyBoardSecondRow = new KeyboardRow();
-        keyBoardFirstRow.add(new KeyboardButton("Совместимость по знакам"));
-        keyBoardFirstRow.add(new KeyboardButton("Гороскоп на сегодня"));
-        keyBoardSecondRow.add(new KeyboardButton("Уточнить совместимость между знаками"));
+        KeyboardRow keyBoardThirdRow = new KeyboardRow();
+        keyBoardFirstRow.add(new KeyboardButton("Узнать тарифы по Москве"));
+        keyBoardSecondRow.add(new KeyboardButton("Узнать тарифы в Московской области"));
+        keyBoardThirdRow.add(new KeyboardButton("Уточнить цену поездки межгород"));
 
 
 
         keyboardRowList.add(keyBoardFirstRow);
         keyboardRowList.add(keyBoardSecondRow);
+        keyboardRowList.add(keyBoardThirdRow);
 
         replyKeyboardMarkup.setKeyboard(keyboardRowList);
     }
